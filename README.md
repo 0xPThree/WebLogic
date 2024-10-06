@@ -1,6 +1,6 @@
 # WebLogic
 ## CVE-2019-2725
-More information [here](https://app.gitbook.com/o/i5zzcCcQScEjAbS1CNWw/s/LZ9hPT4FtAP57VrTApYv/~/changes/84/exploits-pocs/oracle/weblogic-cve-2019-2729).
+Additional information about CVE-2019-2725 can be found on my GitBook, [here](https://app.gitbook.com/o/i5zzcCcQScEjAbS1CNWw/s/LZ9hPT4FtAP57VrTApYv/~/changes/84/exploits-pocs/oracle/weblogic-cve-2019-2729).
 
 Deserialization through `wls-wsat.war` and `wls9_async_response.war`. 
 
