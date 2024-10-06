@@ -1,4 +1,9 @@
 # WebLogic
+## CVE-2018-2628
+Additional information about CVE-2018-2628 can be found on my GitBook, [here](https://app.gitbook.com/o/i5zzcCcQScEjAbS1CNWw/s/LZ9hPT4FtAP57VrTApYv/exploits-pocs/oracle/weblogic-cve-2018-2628).
+![cve-2018-2628](cve-2018-2628/cve-2018-2628.png)
+
+
 ## CVE-2019-2725
 Additional information about CVE-2019-2725 can be found on my GitBook, [here](https://app.gitbook.com/o/i5zzcCcQScEjAbS1CNWw/s/LZ9hPT4FtAP57VrTApYv/~/changes/84/exploits-pocs/oracle/weblogic-cve-2019-2729).
 
