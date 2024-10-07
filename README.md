@@ -13,5 +13,5 @@ Payload [`burp-req01.txt`](cve-2019-2725/burp-req01.txt) tested successfully aga
 ![cve-2019-2725](cve-2019-2725/cve-2019-2725.png)
 
 ## CVE-2023-21839
-Additional information about CVE-2023-21839 can be found on my GitBook, [here](https://app.gitbook.com/o/i5zzcCcQScEjAbS1CNWw/s/LZ9hPT4FtAP57VrTApYv/~/changes/85/exploits-pocs/oracle/weblogic-cve-2024-21839).
+Additional information about CVE-2023-21839 can be found on my GitBook, [here](https://app.gitbook.com/o/i5zzcCcQScEjAbS1CNWw/s/LZ9hPT4FtAP57VrTApYv/exploits-pocs/oracle/weblogic-cve-2024-21839).
 
