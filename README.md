@@ -20,3 +20,5 @@ Additional information about CVE-2023-21839 can be found on my GitBook, [here](h
 ![cve-2023-21839-02](https://0xpthree.gitbook.io/~gitbook/image?url=https%3A%2F%2F2314265932-files.gitbook.io%2F%7E%2Ffiles%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Fspaces%252FLZ9hPT4FtAP57VrTApYv%252Fuploads%252F8IiPiKI4M047VeFlMEtn%252Fimage.png%3Falt%3Dmedia%26token%3De80538ed-f792-45e3-a75e-0e34fab96d8b&width=768&dpr=1&quality=100&sign=6ff0a792&sv=1)
 
 ### Java, exploiting T3
+![cve-2023-21839_java01](images/cve-2023-21839_java01.png)
+![cve-2023-21839_java02](images/cve-2023-21839_java02.png)
