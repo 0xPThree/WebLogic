@@ -33,3 +33,11 @@ Additional information about CVE-2024-20931 can be found on my GitBook, [here](h
 
 ![cve-2024-20931_01](images/cve-2024-20931_01.png)
 ![cve-2024-20931_02](images/cve-2024-20931_02.png)
+
+---
+
+## CVE-2024-21006
+Additional information about CVE-2024-21006 can be found on my GitBook, [here](https://0xpthree.gitbook.io/notes/exploits-pocs/oracle/weblogic-cve-2024-21006).
+
+![cve-2024-21006_01](images/cve-2024-21006_01.png)
+![cve-2024-21006_02](images/cve-2024-21006_02.png)
