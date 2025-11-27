@@ -1,0 +1,106 @@
+x-common: &default-common
+  ulimits:
+    nofile:
+      soft: 65536
+      hard: 65536
+    nproc:
+      soft: 16384
+      hard: 16384
+  extra_hosts:
+    - "${DC_HOSTNAME}:${DC_HOST_GATEWAY}"
+    - "${DC_DB_HOST}:${DC_DB_IP}"
+
+services:
+  # ========================================================
+  # Oracle Database Container
+  # ========================================================
+  oimdb:
+    <<: *default-common
+    image: ${DC_REGISTRY_DB}/oracle/database:${DC_DB_VERSION}
+    container_name: oimdb
+    ports:
+      - "${DC_DB_PORT}:1521"
+      - "${DC_DB_OEM_PORT}:5500"
+    environment:
+      - ORACLE_SID=${DC_DB_SID}
+      - ORACLE_PDB=${DC_DB_PDB}
+      - ORACLE_PWD=${DC_DB_SYSPWD}
+    volumes:
+      - ${DC_DB_DBDATA}:/opt/oracle/oradata
+
+  # ========================================================
+  # OIG Admin Server (creates domain)
+  # ========================================================
+  oimadmin:
+    <<: *default-common
+    image: ${OIG_IMAGE}
+    container_name: oimadmin
+    hostname: oimadmin
+    command: /bin/bash -c "sleep 5s; /u01/oracle/dockertools/createDomainAndStart.sh"
+    ports:
+      - "7001:7001"
+    environment:
+      - ADMIN_HOST=${DC_HOSTNAME}
+      - ADMIN_PASSWORD=${DC_WLS_ADMIN_PASSWORD}
+      - CONNECTION_STRING=${DC_DB_HOST}:${DC_DB_PORT}/${DC_DB_PDB}
+      - DB_PASSWORD=${DC_DB_SYSPWD}
+      - DB_SCHEMA_PASSWORD=${DC_RCU_SCHPWD}
+      - RCUPREFIX=${DC_RCU_OIMPFX}
+    volumes:
+      - ${DC_DOMAIN_HOME}:/u01/oracle/user_projects
+
+  # ========================================================
+  # SOA Managed Server
+  # ========================================================
+  soams:
+    <<: *default-common
+    image: ${OIG_IMAGE}
+    container_name: soams
+    hostname: soams
+    depends_on:
+      - oimadmin
+    command: /bin/bash -c "/u01/oracle/dockertools/startMS.sh"
+    ports:
+      - "8001:8001"
+      - "8002:8002"
+      - "8003:8003"
+    environment:
+      - ADMIN_HOST=${DC_HOSTNAME}
+      - ADMIN_PORT=7001
+      - ADMIN_PASSWORD=${DC_WLS_ADMIN_PASSWORD}
+      - MANAGED_SERVER=soa_server1
+      - MS_HOST=${DC_HOSTNAME}
+    volumes:
+      - ${DC_DOMAIN_HOME}:/u01/oracle/user_projects
+
+  # ========================================================
+  # OIG Managed Server
+  # ========================================================
+  oimms:
+    <<: *default-common
+    image: ${OIG_IMAGE}
+    container_name: oimms
+    hostname: oimms
+    depends_on:
+      - oimadmin
+    command: /bin/bash -c "/u01/oracle/dockertools/startMS.sh"
+    ports:
+      - "14000:14000"
+      - "14001:14001"
+      - "14002:14002"
+    environment:
+      - ADMIN_HOST=${DC_HOSTNAME}
+      - ADMIN_PORT=7001
+      - ADMIN_PASSWORD=${DC_WLS_ADMIN_PASSWORD}
+      - MANAGED_SERVER=oim_server1
+      - MS_HOST=${DC_HOSTNAME}
+    volumes:
+      - ${DC_DOMAIN_HOME}:/u01/oracle/user_projects
+
+# ==========================================================
+# Docker Network (externally created in setenv.sh)
+# ==========================================================
+networks:
+  default:
+    external: true
+    name: containerizeddb_default
