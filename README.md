@@ -46,6 +46,6 @@ Additional information about CVE-2024-21006 can be found on my GitBook, [here](h
 
 # Identity Manager
 ## CVE-2025-61757
-Additional information about CVE-2024-21006 can be found on my GitBook, [here](https://0xpthree.gitbook.io/notes/exploits-pocs/oracle/identity-manager-cve-2025-61757).
+Additional information about CVE-2025-61757 can be found on my GitBook, [here](https://0xpthree.gitbook.io/notes/exploits-pocs/oracle/identity-manager-cve-2025-61757).
 
 ![cve-2025-61757.png](images/cve-2025-61757.png)
